@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import ValueSection from "./components/ValueSection";
-import ProductHero from "./components/PoductHero.tsx";
+import ProductHero from "./components/PoductHero";
 import ProvidersCarousel from "./components/ProvidersCarousel";
 // import CalendlyWidget from "./components/BookPage";
 
