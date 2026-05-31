@@ -1,13 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState('');
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleSearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log('Search for:', query);
   };
 
   return (
@@ -16,6 +22,16 @@ export default function Navbar() {
         <Link href="/" className="navbar-logo">
           💰 FinanceApp
         </Link>
+
+        <form className="navbar-search" onSubmit={handleSearch}>
+          <input
+            type="text"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search the site..."
+            aria-label="Search"
+          />
+        </form>
 
         <button 
           className="hamburger" 
@@ -35,17 +51,17 @@ export default function Navbar() {
           </li>
           <li className="nav-item">
             <Link href="/dashboard" className="nav-link" onClick={() => setIsOpen(false)}>
-              Dashboard
+              Our Vision
             </Link>
           </li>
           <li className="nav-item">
             <Link href="/transactions" className="nav-link" onClick={() => setIsOpen(false)}>
-              Transactions
+             Products 
             </Link>
           </li>
           <li className="nav-item">
             <Link href="/settings" className="nav-link" onClick={() => setIsOpen(false)}>
-              Settings
+              Solutions 
             </Link>
           </li>
         </ul>

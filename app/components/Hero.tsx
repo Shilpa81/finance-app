@@ -6,12 +6,9 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h1 className="hero-title">
-          Take Control of Your Financial Future
-        </h1>
+        <h1 className="hero-title">Take Control of Your Financial Future</h1>
         <p className="hero-subtitle">
-          Manage, track, and grow your wealth with our intuitive finance management platform. 
-          Make smarter financial decisions today.
+          Your future deserves more than guesswork. We provide personalized financial solutions designed to help protect your family, grow your wealth, and prepare you for every stage of life. From retirement and estate planning to health coverage and long-term care strategies, our experienced professionals are here to guide you with clarity, confidence, and care.
         </p>
         <div className="hero-buttons">
           <Link href="/dashboard" className="btn btn-primary">
@@ -22,7 +19,6 @@ export default function Hero() {
           </Link>
         </div>
       </div>
-      
       <div className="hero-background">
         <div className="hero-shape hero-shape-1"></div>
         <div className="hero-shape hero-shape-2"></div>
