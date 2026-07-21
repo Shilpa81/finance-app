@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import products from './products.json';
 
 type Product = {
@@ -18,6 +19,17 @@ type Product = {
 };
 
 export default function ProductBook() {
+  const searchParams = useSearchParams();
+  const search = searchParams?.get('search') ?? '';
+  const searchLower = search.toLowerCase();
+  const filtered = search
+    ? (products as Product[]).filter(
+        (p) =>
+          p.name.toLowerCase().includes(searchLower) ||
+          p.desc.toLowerCase().includes(searchLower) ||
+          p.tag.toLowerCase().includes(searchLower)
+      )
+    : [];
   const [stage, setStage] = useState<'closed' | 'opening' | 'open'>('closed');
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -35,6 +47,35 @@ export default function ProductBook() {
 
   return (
     <>
+      {search ? (
+        <div className="search-results">
+          <div className="top-bar">
+            <button className="back-btn" onClick={() => history.back()}>
+              ← Back
+            </button>
+            <span className="book-label">Search results for "{search}"</span>
+          </div>
+
+          {filtered.length === 0 ? (
+            <div style={{ padding: 24 }}>No results found.</div>
+          ) : (
+            <div className="results-grid">
+              {filtered.map((p) => (
+                <div key={p.id} className="result-card">
+                  <div className="result-image" style={{ position: 'relative', width: '100%', height: 160 }}>
+                    <Image src={p.image} alt={p.name} fill style={{ objectFit: 'cover' }} sizes="(max-width: 820px) 100vw, 820px" />
+                  </div>
+                  <div className="result-body">
+                    <div className="product-image-title">{p.name}</div>
+                    <div className="product-tagline">{p.tagline}</div>
+                    <p className="product-desc">{p.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
       <div className="book-section">
 
         {/* ── Closed / Opening state ── */}

@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -13,7 +15,9 @@ export default function Navbar() {
 
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('Search for:', query);
+    const q = query.trim();
+    if (!q) return;
+    router.push(`/transactions?search=${encodeURIComponent(q)}`);
   };
 
   return (
