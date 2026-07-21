@@ -1,89 +1,164 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
+import products from './products.json';
 
-export default function Transactions() {
-  const [filter, setFilter] = useState('all');
+type Product = {
+  id: string;
+  icon: string;
+  color: string;
+  bg: string;
+  tag: string;
+  name: string;
+  tagline: string;
+  image: string;
+  desc: string;
+  features: string[];
+};
 
-  const transactions = [
-    { id: 1, description: 'Salary Deposit', amount: '+5200', date: 'May 18, 2026', type: 'income', category: 'Salary' },
-    { id: 2, description: 'Whole Foods Market', amount: '-120.50', date: 'May 17, 2026', type: 'expense', category: 'Groceries' },
-    { id: 3, description: 'Electric Company', amount: '-85.20', date: 'May 16, 2026', type: 'expense', category: 'Utilities' },
-    { id: 4, description: 'Restaurant Dinner', amount: '-45.75', date: 'May 15, 2026', type: 'expense', category: 'Food' },
-    { id: 5, description: 'Gas Station', amount: '-52.00', date: 'May 14, 2026', type: 'expense', category: 'Transportation' },
-    { id: 6, description: 'Gym Membership', amount: '-50', date: 'May 13, 2026', type: 'expense', category: 'Health' },
-    { id: 7, description: 'Online Transfer In', amount: '+1000', date: 'May 12, 2026', type: 'income', category: 'Transfer' },
-    { id: 8, description: 'Shopping Mall', amount: '-150', date: 'May 11, 2026', type: 'expense', category: 'Shopping' },
-  ];
+export default function ProductBook() {
+  const [stage, setStage] = useState<'closed' | 'opening' | 'open'>('closed');
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const filteredTransactions = filter === 'all' 
-    ? transactions 
-    : transactions.filter(t => t.type === filter);
+  const active = (products as Product[])[activeIndex];
+
+  const handleOpen = () => {
+    if (stage !== 'closed') return;
+    setStage('opening');
+    setTimeout(() => setStage('open'), 900);
+  };
+
+  const handleClose = () => {
+    setStage('closed');
+  };
 
   return (
-    <div className="transactions-container">
-      <h1 className="page-title">Transactions</h1>
+    <>
+      <div className="book-section">
 
-      <div className="filter-buttons">
-        <button 
-          className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-          onClick={() => setFilter('all')}
-        >
-          All
-        </button>
-        <button 
-          className={`filter-btn ${filter === 'income' ? 'active' : ''}`}
-          onClick={() => setFilter('income')}
-        >
-          Income
-        </button>
-        <button 
-          className={`filter-btn ${filter === 'expense' ? 'active' : ''}`}
-          onClick={() => setFilter('expense')}
-        >
-          Expenses
-        </button>
-      </div>
+        {/* ── Closed / Opening state ── */}
+        {stage !== 'open' && (
+          <div className="book-stage">
+            <div className="book-scene">
+              <div
+                className="book-3d"
+                onClick={handleOpen}
+                role="button"
+                aria-label="Open product book"
+              >
+                {/* Static book body behind the cover */}
+                <div className="book-body" />
+                <div className="book-pages" />
+                <div className="book-spine"><span>NAIN Financials</span></div>
 
-      <div className="transactions-table-wrapper">
-        <table className="transactions-table">
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Category</th>
-              <th>Date</th>
-              <th className="amount-column">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredTransactions.map((transaction) => (
-              <tr key={transaction.id} className={`transaction-row ${transaction.type}`}>
-                <td className="description-cell">{transaction.description}</td>
-                <td className="category-cell">{transaction.category}</td>
-                <td className="date-cell">{transaction.date}</td>
-                <td className={`amount-cell ${transaction.type}`}>
-                  {transaction.amount}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                {/* Flipping cover */}
+                <div className={`cover-flap ${stage === 'opening' ? 'flipping' : ''}`}>
+                  {/* Front of cover */}
+                  <div className="cover-front">
+                    <img
+                      src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=60"
+                      alt=""
+                      className="cover-bg-img"
+                    />
+                    <div className="cover-content">
+                      <div className="cover-logo">🏦</div>
+                      <div className="cover-title">NAIN Financials</div>
+                      <div className="cover-sub">Product Guide</div>
+                      <div className="cover-badges">
+                        <span className="cover-badge" style={{ background: 'rgba(55,138,221,0.2)', color: '#5a9aff' }}>9 Products</span>
+                        <span className="cover-badge" style={{ background: 'rgba(29,158,117,0.2)', color: '#4ecba0' }}>Full Coverage</span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Back (inside) of cover */}
+                  <div className="cover-back" />
+                </div>
 
-      <div className="transactions-summary">
-        <div className="summary-item">
-          <span>Total Income:</span>
-          <span className="income">+$6,200</span>
-        </div>
-        <div className="summary-item">
-          <span>Total Expenses:</span>
-          <span className="expense">-$503.45</span>
-        </div>
-        <div className="summary-item highlight">
-          <span>Net:</span>
-          <span>$5,696.55</span>
-        </div>
+              </div>
+            </div>
+            <div className="book-hint">
+              {stage === 'closed' ? 'Click the book to open ↓' : 'Opening…'}
+            </div>
+          </div>
+        )}
+
+        {/* ── Open pages ── */}
+        {stage === 'open' && (
+          <div className="pages-section">
+
+            <div className="top-bar">
+              <button className="back-btn" onClick={handleClose}>
+                ← Close book
+              </button>
+              <span className="book-label">NAIN Financials — Product Guide</span>
+            </div>
+
+            <div className="tabs-row">
+              {(products as Product[]).map((p, i) => (
+                <button
+                  key={p.id}
+                  className={`tab-btn${i === activeIndex ? ' active' : ''}`}
+                  onClick={() => setActiveIndex(i)}
+                >
+                  {p.icon} {p.name.split(' ').slice(0, 2).join(' ')}
+                </button>
+              ))}
+            </div>
+
+            <div className="product-card" key={active.id}>
+              <div className="product-image-wrap">
+                <Image
+                  src={active.image}
+                  alt={active.name}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 820px) 100vw, 820px"
+                  priority
+                />
+                <div className="product-image-overlay" />
+                <div className="product-image-badge">
+                  <div className="product-image-icon" style={{ background: active.bg }}>
+                    {active.icon}
+                  </div>
+                  <div>
+                    <span className="product-image-tag" style={{ background: active.bg, color: active.color }}>
+                      {active.tag}
+                    </span>
+                    <div className="product-image-title">{active.name}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="product-body">
+                <p className="product-tagline">"{active.tagline}"</p>
+                <p className="product-desc">{active.desc}</p>
+                <div className="features-label">Key features</div>
+                <div className="features-grid">
+                  {active.features.map((f) => (
+                    <div className="feature-item" key={f}>
+                      <div className="feature-check" style={{ background: active.bg, color: active.color }}>✓</div>
+                      {f}
+                    </div>
+                  ))}
+                </div>
+                <div className="cta-row">
+                  <button className="btn-primary" style={{ background: active.color }}>
+                    Get started →
+                  </button>
+                  <button className="btn-outline">Talk to an advisor</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        )}
+        {/* <div className="hero-background">
+        <div className="hero-shape hero-shape-1"></div>
+        <div className="hero-shape hero-shape-2"></div>
+        <div className="hero-shape hero-shape-3"></div> */}
+      {/* </div> */}
       </div>
-    </div>
+    </>
   );
 }

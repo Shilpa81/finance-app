@@ -2,193 +2,132 @@
 
 import { useState } from 'react';
 
-export default function Settings() {
-  const [profile, setProfile] = useState({
-    fullName: 'Shilpa Kumar',
-    email: 'shilpa@example.com',
-    currency: 'USD',
-  });
+type FormState = 'idle' | 'loading' | 'success' | 'error';
 
-  const [notifications, setNotifications] = useState({
-    emailAlerts: true,
-    budgetAlerts: true,
-    weeklyReport: true,
-    monthlyReport: false,
-  });
+export default function ContactForm() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '' });
+  const [status, setStatus] = useState<FormState>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const [security, setSecurity] = useState({
-    twoFactor: false,
-    loginAlerts: true,
-  });
+  const update = (k: keyof typeof form, v: string) =>
+    setForm(prev => ({ ...prev, [k]: v }));
 
-  const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setProfile({ ...profile, [name]: value });
+  const handleSubmit = async () => {
+    if (!form.name.trim() || !form.email.trim()) return;
+    setStatus('loading');
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || 'Something went wrong. Please try again.');
+      }
+
+      setStatus('success');
+      setForm({ name: '', email: '', phone: '' });
+    } catch (e: any) {
+      setStatus('error');
+      setErrorMsg(e.message || 'Something went wrong. Please try again.');
+    }
   };
 
-  const handleNotificationChange = (key: string) => {
-    setNotifications({ ...notifications, [key]: !notifications[key as keyof typeof notifications] });
-  };
-
-  const handleSecurityChange = (key: string) => {
-    setSecurity({ ...security, [key]: !security[key as keyof typeof security] });
-  };
-
-  const handleSave = () => {
-    alert('Settings saved successfully!');
-  };
+  const reset = () => { setStatus('idle'); setErrorMsg(''); };
 
   return (
-    <div className="settings-container">
-      <h1 className="page-title">Settings</h1>
+    <>
+     <div className="cf-wrap">
+        <div className="cf-card">
 
-      <div className="settings-sections">
-        {/* Profile Section */}
-        <div className="settings-section">
-          <h2 className="section-title">Profile Information</h2>
-          <div className="settings-group">
-            <div className="form-group">
-              <label htmlFor="fullName">Full Name</label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                value={profile.fullName}
-                onChange={handleProfileChange}
-                className="form-input"
-              />
+          <div className="cf-logo">
+            <div className="cf-logo-icon">🏦</div>
+            <span className="cf-logo-text">NAIN Financials</span>
+          </div>
+
+          {/* ── Success state ── */}
+          {status === 'success' ? (
+            <div className="cf-success">
+              <div className="cf-success-icon">✅</div>
+              <div className="cf-success-title">We received your info!</div>
+              <p className="cf-success-sub">
+                Thank you, <strong style={{ color: '#c8d8f8' }}>{form.name || 'there'}</strong>.<br />
+                A NAIN advisor will reach out to you shortly.
+              </p>
+              <button className="cf-success-btn" onClick={reset}>Submit another</button>
             </div>
+          ) : (
+            <>
+              <h2 className="cf-title">Get in touch</h2>
+              <p className="cf-sub">
+                Fill in your details and a NAIN Financials advisor will contact you about the right product for your needs.
+              </p>
 
-            <div className="form-group">
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={profile.email}
-                onChange={handleProfileChange}
-                className="form-input"
-              />
-            </div>
+              {/* Name */}
+              <div className="cf-field">
+                <label className="cf-label">Full name <span>*</span></label>
+                <input
+                  className="cf-input"
+                  type="text"
+                  placeholder="John Smith"
+                  value={form.name}
+                  onChange={e => update('name', e.target.value)}
+                  disabled={status === 'loading'}
+                />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="currency">Preferred Currency</label>
-              <select
-                id="currency"
-                name="currency"
-                value={profile.currency}
-                onChange={handleProfileChange}
-                className="form-input"
+              {/* Email */}
+              <div className="cf-field">
+                <label className="cf-label">Email address <span>*</span></label>
+                <input
+                  className="cf-input"
+                  type="email"
+                  placeholder="john@example.com"
+                  value={form.email}
+                  onChange={e => update('email', e.target.value)}
+                  disabled={status === 'loading'}
+                />
+              </div>
+
+              {/* Phone */}
+              <div className="cf-field">
+                <label className="cf-label">Phone number <span style={{ color: '#3d5a99' }}>(optional)</span></label>
+                <input
+                  className="cf-input"
+                  type="tel"
+                  placeholder="+1 (555) 000-0000"
+                  value={form.phone}
+                  onChange={e => update('phone', e.target.value)}
+                  disabled={status === 'loading'}
+                />
+              </div>
+
+              {/* Submit */}
+              <button
+                className="cf-btn"
+                onClick={handleSubmit}
+                disabled={status === 'loading' || !form.name.trim() || !form.email.trim()}
               >
-                <option>USD</option>
-                <option>EUR</option>
-                <option>GBP</option>
-                <option>INR</option>
-                <option>JPY</option>
-              </select>
-            </div>
-          </div>
-        </div>
+                {status === 'loading' ? (
+                  <><div className="cf-spinner" /> Sending…</>
+                ) : (
+                  'Send my details →'
+                )}
+              </button>
 
-        {/* Notifications Section */}
-        <div className="settings-section">
-          <h2 className="section-title">Notification Preferences</h2>
-          <div className="settings-group">
-            <div className="toggle-item">
-              <div className="toggle-info">
-                <label>Email Alerts</label>
-                <p>Receive notifications via email</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={notifications.emailAlerts}
-                onChange={() => handleNotificationChange('emailAlerts')}
-                className="toggle-checkbox"
-              />
-            </div>
+              {/* Error */}
+              {status === 'error' && (
+                <div className="cf-error">⚠️ {errorMsg}</div>
+              )}
+            </>
+          )}
 
-            <div className="toggle-item">
-              <div className="toggle-info">
-                <label>Budget Alerts</label>
-                <p>Get notified when you exceed budget limits</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={notifications.budgetAlerts}
-                onChange={() => handleNotificationChange('budgetAlerts')}
-                className="toggle-checkbox"
-              />
-            </div>
-
-            <div className="toggle-item">
-              <div className="toggle-info">
-                <label>Weekly Report</label>
-                <p>Receive weekly financial summary</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={notifications.weeklyReport}
-                onChange={() => handleNotificationChange('weeklyReport')}
-                className="toggle-checkbox"
-              />
-            </div>
-
-            <div className="toggle-item">
-              <div className="toggle-info">
-                <label>Monthly Report</label>
-                <p>Receive monthly financial summary</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={notifications.monthlyReport}
-                onChange={() => handleNotificationChange('monthlyReport')}
-                className="toggle-checkbox"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Security Section */}
-        <div className="settings-section">
-          <h2 className="section-title">Security & Privacy</h2>
-          <div className="settings-group">
-            <div className="toggle-item">
-              <div className="toggle-info">
-                <label>Two-Factor Authentication</label>
-                <p>Add an extra layer of security to your account</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={security.twoFactor}
-                onChange={() => handleSecurityChange('twoFactor')}
-                className="toggle-checkbox"
-              />
-            </div>
-
-            <div className="toggle-item">
-              <div className="toggle-info">
-                <label>Login Alerts</label>
-                <p>Get notified of new login attempts</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={security.loginAlerts}
-                onChange={() => handleSecurityChange('loginAlerts')}
-                className="toggle-checkbox"
-              />
-            </div>
-          </div>
         </div>
       </div>
-
-      <div className="settings-actions">
-        <button onClick={handleSave} className="save-btn">
-          Save Changes
-        </button>
-        <button className="cancel-btn">
-          Cancel
-        </button>
-      </div>
-    </div>
+    </>
   );
 }

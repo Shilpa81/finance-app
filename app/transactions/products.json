@@ -1,0 +1,110 @@
+[
+  {
+    "id": "will",
+    "icon": "📜",
+    "color": "#378ADD",
+    "bg": "rgba(55,138,221,0.1)",
+    "tag": "Estate Planning",
+    "name": "Will & Trust Draft",
+    "tagline": "Secure your assets and final wishes",
+    "image": "https://images.unsplash.com/photo-1450101499163-c8917c3b1c7d?w=800&q=80",
+    "desc": "Draft your Will and Trust to protect your assets and clearly outline your intentions. Our Premium Probate Avoidance Package includes four additional critical estate planning documents for complete protection — ensuring your estate is thoroughly planned and your legacy is preserved.",
+    "features": ["Legally binding will drafting", "Revocable & irrevocable trusts", "Power of attorney document", "Healthcare directive included", "Probate avoidance strategy", "Asset distribution planning"]
+  },
+  {
+    "id": "snt",
+    "icon": "🤝",
+    "color": "#639922",
+    "bg": "rgba(99,153,34,0.1)",
+    "tag": "Special Needs",
+    "name": "Special Needs Trust",
+    "tagline": "Protect a loved one's financial future",
+    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    "desc": "A special needs trust allows parents, family members, and interested parties to contribute funds for a disabled loved one while preserving eligibility for Medicaid and SSI. It covers supplemental expenses that government benefits do not, providing lasting financial security.",
+    "features": ["Preserves Medicaid & SSI eligibility", "Covers supplemental expenses", "Family contributions welcome", "Professionally managed disbursements", "Lifelong financial protection", "Tax-advantaged structure"]
+  },
+  {
+    "id": "term",
+    "icon": "🛡️",
+    "color": "#BA7517",
+    "bg": "rgba(186,117,23,0.1)",
+    "tag": "Life Insurance",
+    "name": "Term Life Insurance",
+    "tagline": "Affordable protection for your family",
+    "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+    "desc": "A term life insurance policy provides affordable, straightforward protection for you and your loved ones. In the event of an unexpected death, your family receives a tax-free benefit ensuring financial stability. Choose the coverage term and amount that best fits your life stage.",
+    "features": ["Affordable fixed premiums", "10, 20 or 30-year terms", "Tax-free death benefit", "No medical exam options", "Convertible to permanent", "Family income replacement"]
+  },
+  {
+    "id": "iul",
+    "icon": "📈",
+    "color": "#378ADD",
+    "bg": "rgba(55,138,221,0.1)",
+    "tag": "Life Insurance",
+    "name": "Index Universal Life",
+    "tagline": "Coverage that grows with the market",
+    "image": "https://images.unsplash.com/photo-1610583132714-f6885b6efdb3?w=800&q=80",
+    "desc": "Index Universal Life Insurance combines lifelong protection with cash value growth tied to a market index. You are shielded from downturns through a guaranteed floor while still capturing upside growth. Access your cash value anytime for true financial flexibility.",
+    "features": ["Market-linked cash value growth", "Guaranteed downside protection", "Flexible premium payments", "Tax-deferred accumulation", "Lifetime coverage", "Cash value access anytime"]
+  },
+  {
+    "id": "fia",
+    "icon": "📊",
+    "color": "#1D9E75",
+    "bg": "rgba(29,158,117,0.1)",
+    "tag": "Annuity",
+    "name": "Fixed Index Annuities",
+    "tagline": "Guaranteed principal with growth potential",
+    "image": "https://images.unsplash.com/photo-1554224311-beee415c201f?w=800&q=80",
+    "desc": "A fixed indexed annuity guarantees your principal and credited interest — your investment is never at risk from market losses. It also provides the potential for lifelong income withdrawals, giving you a dependable income stream throughout your retirement years.",
+    "features": ["100% principal protection", "Index-linked growth potential", "Guaranteed lifetime income", "No market loss risk", "Tax-deferred growth", "Flexible payout options"]
+  },
+  {
+    "id": "ltc",
+    "icon": "🏥",
+    "color": "#BA7517",
+    "bg": "rgba(186,117,23,0.1)",
+    "tag": "Care Coverage",
+    "name": "Long Term Care",
+    "tagline": "Coverage for extended healthcare needs",
+    "image": "https://images.unsplash.com/photo-1576091160550-112173e7f7fa?w=800&q=80",
+    "desc": "A long-term care product provides financial coverage for extended healthcare including nursing home care, home health services, and assisted living. It protects your savings from high care costs so you receive quality care without placing a financial burden on your family.",
+    "features": ["Nursing home coverage", "Home health aide benefits", "Assisted living included", "Asset & savings protection", "Inflation protection rider", "Family caregiver support"]
+  },
+  {
+    "id": "aca",
+    "icon": "⚕️",
+    "color": "#1D9E75",
+    "bg": "rgba(29,158,117,0.1)",
+    "tag": "Health Insurance",
+    "name": "Health Insurance (ACA)",
+    "tagline": "Comprehensive ACA coverage plans",
+    "image": "https://images.unsplash.com/photo-1576091160550-112173e7f7fa?w=800&q=80",
+    "desc": "Affordable Care Act health insurance provides essential coverage for individuals and families. Plans include preventive care, prescription drugs, emergency services, and mental health coverage — often with income-based subsidies to make quality healthcare genuinely affordable.",
+    "features": ["Preventive care included", "Prescription drug coverage", "Emergency services", "Mental health benefits", "Income-based subsidies", "No pre-condition denial"]
+  },
+  {
+    "id": "med",
+    "icon": "💊",
+    "color": "#378ADD",
+    "bg": "rgba(55,138,221,0.1)",
+    "tag": "Medicare",
+    "name": "Medicare Advantage",
+    "tagline": "Part C + D all-in-one plans",
+    "image": "https://images.unsplash.com/photo-1576091160674-4f02a1efcc10?w=800&q=80",
+    "desc": "Medicare Advantage combines Part A hospital and Part B medical insurance into one convenient plan from a private insurer. Most plans include Part D prescription drug coverage and additional benefits beyond Original Medicare such as dental, vision, and hearing care.",
+    "features": ["Part A & B combined", "Part D drug coverage", "Dental & vision extras", "Hearing aid benefits", "Low or $0 premiums", "Annual out-of-pocket cap"]
+  },
+  {
+    "id": "partner",
+    "icon": "🤝",
+    "color": "#7F77DD",
+    "bg": "rgba(127,119,221,0.1)",
+    "tag": "Career",
+    "name": "Partnership Program",
+    "tagline": "Build your financial services career",
+    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    "desc": "Join our team and jumpstart your career in finance. Through our powerful distribution system and partnerships with leading financial companies worldwide, you will gain access to training, mentorship, and the tools to build financially successful families across America.",
+    "features": ["World-class training program", "Industry-leading partnerships", "Flexible business model", "Mentorship & support", "Uncapped earning potential", "Financial independence pathway"]
+  }
+]

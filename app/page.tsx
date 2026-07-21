@@ -2,7 +2,7 @@ import Hero from "./components/Hero";
 import ValueSection from "./components/ValueSection";
 import ProductHero from "./components/PoductHero";
 import ProvidersCarousel from "./components/ProvidersCarousel";
-// import CalendlyWidget from "./components/BookPage";
+import RetirementCalculator from "./components/RetirementCalculator";
 
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
       <ValueSection />
       <ProductHero/>
       <ProvidersCarousel />
-      {/* <CalendlyWidget /> */}
+      <RetirementCalculator />
     </main>
   );
 }

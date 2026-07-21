@@ -40,7 +40,9 @@ export default function ProductHero() {
   const rafRef       = useRef<number>(0);
   const activeIdxRef = useRef(0);
 
-  pausedRef.current = paused;
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   // ── IntersectionObserver for text animate-in ────────────────────
   useEffect(() => {
