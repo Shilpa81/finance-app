@@ -91,14 +91,14 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `"NAIN Financials Form" <${process.env.GMAIL_USER}>`,
+      from: `"ProsperPath Form" <${process.env.GMAIL_USER}>`,
       to: ownerEmail,
       subject: `📬 New Lead: ${name}`,
       html: `
         <div style="font-family:system-ui,sans-serif;max-width:520px;margin:0 auto;background:#f5f8ff;border-radius:12px;overflow:hidden;border:1px solid #d0dff0;">
           <div style="background:#0d1e3a;padding:24px 28px;">
             <h2 style="color:#e0ecff;margin:0;font-size:20px;">🏦 New Contact Form Submission</h2>
-            <p style="color:#5a7ab5;margin:6px 0 0;font-size:13px;">NAIN Financials — nainfinancials.com</p>
+            <p style="color:#5a7ab5;margin:6px 0 0;font-size:13px;">ProsperPath — nainfinancials.com</p>
           </div>
           <div style="padding:28px;">
             <table style="width:100%;border-collapse:collapse;">
@@ -128,18 +128,18 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `"NAIN Financials" <${process.env.GMAIL_USER}>`,
+      from: `"ProsperPath" <${process.env.GMAIL_USER}>`,
       to: email,
       subject: `We received your message, ${name.split(' ')[0]}!`,
       html: `
         <div style="font-family:system-ui,sans-serif;max-width:520px;margin:0 auto;background:#f5f8ff;border-radius:12px;overflow:hidden;border:1px solid #d0dff0;">
           <div style="background:#0d1e3a;padding:24px 28px;">
-            <h2 style="color:#e0ecff;margin:0;font-size:20px;">🏦 NAIN Financials</h2>
+            <h2 style="color:#e0ecff;margin:0;font-size:20px;">🏦 ProsperPath</h2>
           </div>
           <div style="padding:28px;">
             <h3 style="color:#1a1a2e;margin:0 0 12px;">Hi ${escapeHtml(name.split(' ')[0])},</h3>
             <p style="color:#444;line-height:1.7;margin:0 0 16px;">
-              Thank you for reaching out to NAIN Financials. We have received your information and a licensed advisor will contact you shortly.
+              Thank you for reaching out to ProsperPath. We have received your information and a licensed advisor will contact you shortly.
             </p>
             <p style="color:#444;line-height:1.7;margin:0 0 24px;">
               In the meantime, feel free to explore our product guide to learn more about what we offer.
@@ -148,7 +148,7 @@ export async function POST(req: NextRequest) {
               Explore Products →
             </a>
             <p style="margin-top:28px;font-size:12px;color:#aaa;">
-              NAIN Financials · If you did not submit this form, please ignore this email.
+              ProsperPath · If you did not submit this form, please ignore this email.
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <div className="footer-logo">FinanceApp</div>
+          <div className="footer-logo">ProsperPath</div>
           <p className="footer-description">
             A premium finance experience built for clarity, growth, and long-term success.
           </p>
@@ -31,7 +31,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span>© 2026 FinanceApp. All rights reserved.</span>
+        <span>© 2026 ProsperPath. All rights reserved.</span>
         <span>Built for modern financial professionals.</span>
       </div>
     </footer>

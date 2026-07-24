@@ -239,7 +239,7 @@
 //           <div className="q-header">
 //             <div className="q-brand">
 //               <div className="q-brand-dot">🏦</div>
-//               NAIN Financials
+//               ProsperPath
 //             </div>
 //             {!done && (
 //               <span className="q-step-count">
@@ -679,10 +679,10 @@ function getRecommendations(answers: Record<string, string>): RecommendationSet 
     ];
 
     // Honest note for education: NAIN does not sell 529s
-    const honestNote = "Important: NAIN Financials does not offer 529 college savings accounts or Coverdell ESAs — those are investment accounts offered by brokerages like Fidelity or Vanguard. What NAIN does offer for education savings is an Index Universal Life (IUL) policy, which builds tax-deferred cash value you can withdraw for education OR any other purpose. This is a legitimate strategy but it is an insurance product, not a dedicated education account.";
+    const honestNote = "Important: ProsperPath does not offer 529 college savings accounts or Coverdell ESAs — those are investment accounts offered by brokerages like Fidelity or Vanguard. What NAIN does offer for education savings is an Index Universal Life (IUL) policy, which builds tax-deferred cash value you can withdraw for education OR any other purpose. This is a legitimate strategy but it is an insurance product, not a dedicated education account.";
 
     return {
-      intro: `Based on what you shared, here is what NAIN Financials can offer for education savings — along with an honest note about what we do not offer.`,
+      intro: `Based on what you shared, here is what ProsperPath can offer for education savings — along with an honest note about what we do not offer.`,
       closest: {
         id: 'iul', icon: '📈', color: '#378ADD', bg: 'rgba(55,138,221,0.12)',
         tag: 'Life Insurance / Savings Vehicle',
@@ -706,7 +706,7 @@ function getRecommendations(answers: Record<string, string>): RecommendationSet 
           cta: 'Explore Term Life',
         },
       ],
-      disclaimer: 'For dedicated tax-advantaged education accounts (529 plans, Coverdell ESAs), please speak with a brokerage or financial advisor. NAIN Financials does not offer these products.',
+      disclaimer: 'For dedicated tax-advantaged education accounts (529 plans, Coverdell ESAs), please speak with a brokerage or financial advisor. ProsperPath does not offer these products.',
     };
   }
 
@@ -812,7 +812,7 @@ function getRecommendations(answers: Record<string, string>): RecommendationSet 
     ];
 
     return {
-      intro: 'Based on what you shared, here are the most appropriate life insurance options from NAIN Financials.',
+      intro: 'Based on what you shared, here are the most appropriate life insurance options from ProsperPath.',
       closest: wantsTemp || wantsLowest ? {
         id: 'term', icon: '🛡️', color: '#BA7517', bg: 'rgba(186,117,23,0.12)',
         tag: 'Life Insurance',
@@ -881,7 +881,7 @@ function getRecommendations(answers: Record<string, string>): RecommendationSet 
     ];
 
     return {
-      intro: 'Based on your situation, here are the health coverage options NAIN Financials offers.',
+      intro: 'Based on your situation, here are the health coverage options ProsperPath offers.',
       closest: isMedicare ? {
         id: 'med', icon: '💊', color: '#378ADD', bg: 'rgba(55,138,221,0.12)',
         tag: 'Medicare',
@@ -934,7 +934,7 @@ function getRecommendations(answers: Record<string, string>): RecommendationSet 
     ];
 
     return {
-      intro: 'Based on your situation, here is what NAIN Financials offers for estate planning.',
+      intro: 'Based on your situation, here is what ProsperPath offers for estate planning.',
       closest: {
         id: 'will', icon: '📜', color: '#378ADD', bg: 'rgba(55,138,221,0.12)',
         tag: 'Estate Planning',
@@ -997,7 +997,7 @@ function getRecommendations(answers: Record<string, string>): RecommendationSet 
       closest: {
         id: 'partner', icon: '🌟', color: '#7F77DD', bg: 'rgba(127,119,221,0.12)',
         tag: 'Career Opportunity',
-        name: 'NAIN Financials Partnership Program',
+        name: 'ProsperPath Partnership Program',
         closestMatch: true,
         desc: 'The Partnership Program is for individuals who want to build a career in financial services by helping families access insurance and financial planning products. You will need to obtain your state life & health insurance license (NAIN provides guidance on this process). Once licensed, you gain access to NAIN\'s product portfolio, training, distribution system, and mentorship. Income is commission-based — what you earn depends directly on what you produce.',
         honestNote: 'This is a commission-based business, not a salaried job. Income is not guaranteed and varies significantly based on effort, skill, and market. Licensing requires passing a state exam. Be sure you understand the business model before committing.',
@@ -1168,7 +1168,7 @@ export default function Questionnaire() {
       {phase === 'branch' && currentStep && (
         <div className="q-page">
           <div className="q-topbar">
-            <div className="q-brand"><div className="q-brand-logo">🏦</div>NAIN Financials</div>
+            <div className="q-brand"><div className="q-brand-logo">🏦</div>ProsperPath</div>
             <button className="q-exit" onClick={restart}>✕ Exit</button>
           </div>
           <div className="q-prog"><div className="q-prog-fill" style={{ width: `${progress}%` }} /></div>
@@ -1203,7 +1203,7 @@ export default function Questionnaire() {
       {phase === 'result' && rec && (
         <div className="r-page">
           <div className="r-topbar">
-            <div className="q-brand"><div className="q-brand-logo">🏦</div>NAIN Financials</div>
+            <div className="q-brand"><div className="q-brand-logo">🏦</div>ProsperPath</div>
             <button className="q-exit" onClick={restart}>✕ Start over</button>
           </div>
           <div className="r-main">

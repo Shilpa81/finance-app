@@ -46,7 +46,7 @@ export default function ContactForm() {
 
           <div className="cf-logo">
             <div className="cf-logo-icon">🏦</div>
-            <span className="cf-logo-text">NAIN Financials</span>
+            <span className="cf-logo-text">ProsperPath</span>
           </div>
 
           {/* ── Success state ── */}
@@ -64,7 +64,7 @@ export default function ContactForm() {
             <>
               <h2 className="cf-title">Get in touch</h2>
               <p className="cf-sub">
-                Fill in your details and a NAIN Financials advisor will contact you about the right product for your needs.
+                Fill in your details and a ProsperPath advisor will contact you about the right product for your needs.
               </p>
 
               {/* Name */}
