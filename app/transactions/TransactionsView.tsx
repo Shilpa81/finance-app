@@ -99,7 +99,7 @@ export default function TransactionsView() {
                 <div className="book-body" />
                 <div className="book-pages" />
                 <div className="book-spine">
-                  <span>NAIN Financials</span>
+                  <span>ProsperPath</span>
                 </div>
 
                 <div className={`cover-flap ${stage === "opening" ? "flipping" : ""}`}>
@@ -111,7 +111,7 @@ export default function TransactionsView() {
                     />
                     <div className="cover-content">
                       <div className="cover-logo">🏦</div>
-                      <div className="cover-title">NAIN Financials</div>
+                      <div className="cover-title">ProsperPath</div>
                       <div className="cover-sub">Product Guide</div>
                       <div className="cover-badges">
                         <span className="cover-badge" style={{ background: "rgba(55,138,221,0.2)", color: "#5a9aff" }}>
@@ -136,7 +136,7 @@ export default function TransactionsView() {
                 <button className="back-btn" onClick={handleClose}>
                   ← Close book
                 </button>
-                <span className="book-label">NAIN Financials — Product Guide</span>
+                <span className="book-label">ProsperPath — Product Guide</span>
               </div>
 
               <div className="tabs-row">

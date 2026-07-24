@@ -24,7 +24,7 @@ export default function ValueSection() {
   }, []);
 
   return (
-    <section className="value-section" aria-label="The Value We Bring">
+    <section id="value-section" className="value-section" aria-label="The Value We Bring">
       <div className="value-background">
         <div className="value-bubble value-bubble-1"></div>
         <div className="value-bubble value-bubble-2"></div>

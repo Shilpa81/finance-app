@@ -24,7 +24,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link href="/" className="navbar-logo">
-          💰 FinanceApp
+          🌱 ProsperPath
         </Link>
 
         <form className="navbar-search" onSubmit={handleSearch}>

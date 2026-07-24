@@ -14,7 +14,7 @@ export default function Hero() {
           <Link href="/dashboard" className="btn btn-primary">
             Get Started
           </Link>
-          <Link href="#features" className="btn btn-secondary">
+          <Link href="#product-section" className="btn btn-secondary">
             Learn More
           </Link>
         </div>

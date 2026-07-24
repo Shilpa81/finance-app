@@ -8,15 +8,15 @@ interface ImageItem {
 }
 
 const IMAGES: ImageItem[] = [
-  { label: 'Estate Planning',   src: './images/service_image_1.png' },
-  { label: 'Special Needs Trust',  src: './images/service_image_2.png'},
-  { label: 'Term Life Insurance',     src: './images/service_image_3.png' },
-  { label: 'Index Universal Life',   src: './images/service_image_4.png'},
-  { label: 'Fixed Index Annuities', src: './images/service_image_5.png' },
-  { label: 'Long-Term Care',   src: './images/service_image_6.png' },
-  { label: 'Health Insurance',      src: './images/service_image_7.png' },
-  { label: 'Medicare Advantage',   src: './images/service_image_8.png'},
-   { label: 'Partnership Program ',   src: './images/service_image_9.png' },
+  { label: 'Estate Planning', src: '/images/service_image_1.png' },
+  { label: 'Special Needs Trust', src: '/images/service_image_2.png' },
+  { label: 'Term Life Insurance', src: '/images/service_image_3.png' },
+  { label: 'Index Universal Life', src: '/images/service_image_4.png' },
+  { label: 'Fixed Index Annuities', src: '/images/service_image_5.png' },
+  { label: 'Long-Term Care', src: '/images/service_image_6.png' },
+  { label: 'Health Insurance', src: '/images/service_image_7.png' },
+  { label: 'Medicare Advantage', src: '/images/service_image_8.png' },
+  { label: 'Partnership Program', src: '/images/service_image_9.png' },
 ];
 
 const RADIUS = 190;
@@ -120,7 +120,7 @@ export default function ProductHero() {
 
   // ── render ──────────────────────────────────────────────────────
   return (
-    <section className="product-section" aria-label="The product We Bring">
+    <section id="product-section" className="product-section" aria-label="The product We Bring">
       <div className="product-background">
         <div className="product-bubble product-bubble-1" />
         <div className="product-bubble product-bubble-2" />

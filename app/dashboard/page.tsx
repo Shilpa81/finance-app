@@ -1136,10 +1136,6 @@ export default function Questionnaire() {
          {/* ══ GOAL STEP ══ */}
       {phase === 'goal' && (
         <div className="q-page">
-          <div className="q-topbar">
-            <div className="q-brand"><div className="q-brand-logo">🏦</div>NAIN Financials</div>
-            <button className="q-exit" onClick={restart}>✕ Exit</button>
-          </div>
           <div className="q-prog"><div className="q-prog-fill" style={{ width: '0%' }} /></div>
           <div className="q-main">
             <div className="q-shell">
