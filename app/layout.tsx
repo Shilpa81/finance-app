@@ -6,6 +6,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ProsperPath",
   description: "Manage your finances with confidence",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export const viewport: Viewport = {
