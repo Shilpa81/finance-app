@@ -13,8 +13,8 @@ export default function Footer() {
           <div>
             <h3>Product</h3>
             <a href="/dashboard">Dashboard</a>
-            <a href="/transactions">Transactions</a>
-            <a href="/settings">Settings</a>
+            <a href="/transactions">Products</a>
+            <a href="/settings">Solutions</a>
           </div>
           <div>
             <h3>Company</h3>
